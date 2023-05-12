@@ -32,7 +32,8 @@ const style = {
   p: 4,
 };
 
-const UserStatus = () => {
+const UserStatus = ({ user }) => {
+  console.log(user, "sadfgfhjgfdsasghdsg");
   const [statusList, setStatusList] = useState([]);
   const [singleStatus, setSingleStatus] = useState("");
   const [userList, setUserList] = useState([]);
@@ -57,7 +58,7 @@ const UserStatus = () => {
     fetch("http://localhost:8080/api/story/all", requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        const filteredData = data.filter((item) => item.userId === currentUser);
+        const filteredData = data.filter((item) => item.userId === user.id);
         setStatusList(filteredData);
       });
   };

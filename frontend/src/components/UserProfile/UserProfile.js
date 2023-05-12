@@ -81,7 +81,7 @@ const Profile = ({ user }) => {
           }}
         >
           <div className="fileupload">
-            <UserStatus />
+          <UserStatus user={user} />
           </div>
         </div>
         {/* Gallery */}
