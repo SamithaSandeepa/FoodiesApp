@@ -9,8 +9,10 @@ const Layout = ({ children, logout, isLoggedIn }) => {
 
   useEffect(() => {
     const footer = document.querySelector(".footer");
-    const height = footer.offsetHeight;
-    setFooterHeight(height);
+    if (footer) {
+      const height = footer.offsetHeight;
+      setFooterHeight(height);
+    }
   }, []);
 
   const style = {
