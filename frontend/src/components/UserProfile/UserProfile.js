@@ -80,7 +80,7 @@ const Profile = ({ user }) => {
             marginBottom: "35px",
           }}
         >
-          <div className="fileupload">
+          <div>
           <UserStatus user={user} />
           </div>
         </div>

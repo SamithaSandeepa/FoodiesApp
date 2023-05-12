@@ -9,6 +9,7 @@ import {
 import NavBar from "../../components/NavBar/NavBar";
 import Grid from "@material-ui/core/Grid";
 import { Margin } from "@mui/icons-material";
+import { Avatar } from "@material-ui/core";
 
 const Comments = ({ postId, postImage, userName, userId }) => {
   console.log(userId, "samitha");
@@ -158,7 +159,16 @@ const Comments = ({ postId, postImage, userName, userId }) => {
         <div className="container-comment">
           <div className="post1">
             <div className="post-header">
-              <img src={image} alt="profile" className="profile-img" />
+              <img
+                src={image}
+                alt="profile"
+                className="profile-img"
+                style={{
+                  width: "35px",
+                  height: "35px",
+                  borderRadius: "50%",
+                }}
+              />
               <h3 className="post-title">{userName}</h3>
             </div>
             <img src={postImage} alt="post" className="post-img" />

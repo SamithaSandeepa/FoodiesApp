@@ -12,6 +12,7 @@ const EditStatus = (item) => {
   // getting data from item
   const [id, setId] = useState(items.id);
   const [userName, setUserName] = useState(items.userName);
+  const [image, setImage] = useState(items.path); // to store the image
   const [path, setPath] = useState(items.path);
   const [privacy, setprivacy] = useState(items.privacy);
   const [caption, setCaption] = useState(items.caption); // to store the title
@@ -27,6 +28,19 @@ const EditStatus = (item) => {
     setprivacy(items.privacy);
     setCaption(items.caption);
   }, [item]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/users/all")
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredUsers = data.filter((user) => user.userName == userName);
+        const imagePaths = filteredUsers.map((user) => user.imagePath);
+        setImage(imagePaths);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleOpen = () => {
     setOpen(true);
@@ -110,13 +124,24 @@ const EditStatus = (item) => {
               <CloseIcon />
             </Button>
           </div>
+          <div className="status-container">
+            <div className="status-image">
+              <img src={image} alt="profile Image" />
+            </div>
+            <div className="status-user">{userName}</div>
+          </div>
+          <div className="status-container">
+            <div className="status-caption">{caption}</div>
+          </div>
+
           <div className="status-image-container">
             <img src={path} alt={caption} />
           </div>
           <div className="status-info">
-            <div className="status-user">{userName}</div>
-            <div className="status-caption">{caption}</div>
-            <div className="button-container">
+            <div
+              className="button-container"
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
               <Button
                 variant="contained"
                 onClick={handleOpen}
@@ -133,7 +158,7 @@ const EditStatus = (item) => {
                 style={{
                   backgroundColor: "#f44336",
                   color: "#fff",
-                  marginTop: "10px",
+                  marginLeft: "10px",
                 }}
               >
                 Delete

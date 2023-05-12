@@ -10,7 +10,7 @@ const Footer = () => {
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
       </div>
-      <div className="footer__center">
+      {/* <div className="footer__center">
         <button>
           <i className="fas fa-plus"></i>
         </button>
@@ -23,7 +23,7 @@ const Footer = () => {
         <button>
           <i className="fas fa-user"></i>
         </button>
-      </div>
+      </div> */}
       <div className="footer__social-icons">
         <a href="#">
           <i className="fab fa-facebook-square"></i>

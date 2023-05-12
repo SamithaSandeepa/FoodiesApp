@@ -34,8 +34,6 @@ const style = {
 };
 
 const AddStatus = () => {
-  console.log(API_URL);
-
   const [statusList, setStatusList] = useState([]);
   const [singleStatus, setSingleStatus] = useState("");
   const [userList, setUserList] = useState([]);
@@ -328,6 +326,7 @@ const AddStatus = () => {
           >
             <div style={{ display: "flex", justifyContent: "center" }}>
               <h2>{singleStatus.userName}</h2>
+
               <Button onClick={handleStoryClose}>
                 <CancelTwoToneIcon style={{ fontSize: 36 }} />
               </Button>
@@ -335,7 +334,7 @@ const AddStatus = () => {
             <img
               style={{
                 maxWidth: "50%",
-                maxHeight: "50%",
+                maxHeight: "595px",
                 height: "auto",
                 display: "block",
                 margin: "auto",
@@ -343,6 +342,7 @@ const AddStatus = () => {
               src={singleStatus.path}
               alt="story"
             />
+            <h1 className="singleCaption">{singleStatus.caption}</h1>
           </Box>
         </Fade>
       </Modal>
