@@ -48,17 +48,22 @@ const MainPage = () => {
         <div className="mainpage__divider"></div>
       </div>
       <div className="upload_text">{progressBar}</div>
-      {postArray.map((item, index) => (
-        <Post
-          key={index}
-          id={item.id}
-          userName={item.userName}
-          imagePath={item.imagePath}
-          caption={item.caption}
-          likeCount={item.likeCount}
-          userId={item.userId}
-        />
-      ))}
+      {postArray.map(
+        (item, index) => (
+          console.log(item, "item"),
+          (
+            <Post
+              key={index}
+              id={item.id}
+              userName={item.userName}
+              imagePath={item.imagePath}
+              caption={item.caption}
+              likeCount={item.likedBy}
+              userId={item.userId}
+            />
+          )
+        )
+      )}
     </div>
   );
 };

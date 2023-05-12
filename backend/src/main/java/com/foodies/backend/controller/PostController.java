@@ -30,5 +30,9 @@ public class PostController {
     public String delete(@PathVariable String id){
         return postService.deletePost(id);
     }
+    @PutMapping("/{postId}/like/{userId}")
+    public Post likePost(@PathVariable String postId, @PathVariable String userId) {
+        return postService.addLikeToPost(postId, userId);
+    }
 
 }

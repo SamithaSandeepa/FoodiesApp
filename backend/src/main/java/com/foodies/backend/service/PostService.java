@@ -15,4 +15,5 @@ public interface PostService {
 
     public String deletePost(String id);
 
-    }
+    public Post addLikeToPost(String postId, String userId);
+}

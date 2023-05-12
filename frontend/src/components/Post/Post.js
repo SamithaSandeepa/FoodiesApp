@@ -19,6 +19,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Iconify from "../iconify/Iconify.js";
 import Comments from "../../views/CommentPage/Comments";
 import profileImage from "../../images/profile.jpg";
+import loveRed from "../../images/loveRed.svg";
 
 const style = {
   position: "absolute",
@@ -33,6 +34,8 @@ const style = {
 };
 
 const Post = ({ id, userName, caption, imagePath, likeCount, userId }) => {
+  // console.log(likeCount.length, "like by");
+  const [like, setLike] = useState(likeCount?.length);
   // console.log( id, userName, caption, imagePath, likeCount,userId );
   const [captionState, setCaptionState] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
@@ -42,6 +45,12 @@ const Post = ({ id, userName, caption, imagePath, likeCount, userId }) => {
   const currentUser = JSON.parse(localStorage.getItem("users")).uid;
   console.log(currentUser, "current user");
   const [image, setImage] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
+
+  useEffect(() => {
+    setLike(likeCount?.length);
+    setIsLiked(likeCount.includes(currentUser));
+  }, [likeCount, currentUser]);
 
   const handleCaptionChange = (event) => {
     setCaptionState(event.target.value);
@@ -94,6 +103,23 @@ const Post = ({ id, userName, caption, imagePath, likeCount, userId }) => {
         console.log(error);
       });
   }, []);
+
+  const addLike = (postId, currentUser) => {
+    console.log(postId, currentUser);
+    fetch(`http://localhost:8080/api/posts/${postId}/like/${currentUser}`, {
+      method: "PUT",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Like added:", data.likedBy);
+        // setLike();
+        setLike(data.likedBy?.length);
+        setIsLiked(data.likedBy.includes(currentUser));
+      })
+      .catch((error) => {
+        console.error("Error adding like:", error);
+      });
+  };
 
   const handleSubmitEditPost = (id) => {
     let payload = {
@@ -167,9 +193,18 @@ const Post = ({ id, userName, caption, imagePath, likeCount, userId }) => {
 
       {/* Action Icons */}
       <div className="post__actions">
-        <div className="post__action">
-          <img className="post__icon" src={love} alt="love" />
-          {/* <Typography variant="subtitle1">{likes.length}</Typography> */}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <div className="post__action">
+            <a>
+              <img
+                className="post__icon"
+                src={isLiked ? loveRed : love}
+                alt="love"
+                onClick={() => addLike(id, currentUser)}
+              />
+            </a>
+          </div>
+          <Typography variant="subtitle1">{like}</Typography>
         </div>
         <div className="post__action">
           <img

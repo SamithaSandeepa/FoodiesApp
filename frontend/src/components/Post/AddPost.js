@@ -91,7 +91,7 @@ const AddPost = () => {
             imagePath: downloadURL,
             caption: caption,
             timeStamp: new Date().getTime(),
-            likeCount: 0,
+            likedBy: [],
           };
 
           const requestOptions = {

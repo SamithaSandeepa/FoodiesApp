@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,7 +24,7 @@ public class Post {
     private String caption;
     private String userId;
     private String userName;
-    private int likeCount;
+    private List<String> likedBy;
     private String imagePath;
 
     @CreatedDate
@@ -31,13 +32,21 @@ public class Post {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
     private String timestamp;
 
-    public Post(String caption, String userId, String userName, int likeCount, String imagePath, String timestamp) {
+
+    public List<String> getLikedBy() {
+        return likedBy;
+    }
+
+    public void setLikedBy(List<String> likedBy) {
+        this.likedBy = likedBy;
+    }
+
+    public Post(String caption, String userId, String userName, List<String> likedBy, String imagePath) {
         this.caption = caption;
         this.userId = userId;
         this.userName = userName;
-        this.likeCount = likeCount;
+        this.likedBy = likedBy;
         this.imagePath = imagePath;
-        this.timestamp = timestamp;
     }
 
     public String getUserId() {
@@ -56,13 +65,6 @@ public class Post {
         this.userName = userName;
     }
 
-    public int getLikeCount() {
-        return likeCount;
-    }
-
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
-    }
 
     public String getImagePath() {
         return imagePath;

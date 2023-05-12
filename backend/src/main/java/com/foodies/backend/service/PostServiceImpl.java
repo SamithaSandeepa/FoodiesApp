@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,14 +40,6 @@ public class PostServiceImpl implements PostService{
         Optional<Post> postData = postRepo.findById(id);
         postRepo.deleteById(id);
         return id;
-//        if(postData.isPresent()){
-//            postRepo.deleteById(id);
-//            return  "true";
-//        }else {
-//            return "post not found";
-//        }
-//        postRepo.delete(post);
-//        return "asdas";
     }
 
     @Override
@@ -58,4 +51,22 @@ public class PostServiceImpl implements PostService{
         postRepo.save(posts);
        return posts;
     }
+
+    @Override
+    public Post addLikeToPost(String postId, String userId) {
+        Post post = postRepo.findById(postId).orElseThrow(() -> new RuntimeException("Post not found"));
+        List<String> likedBy = post.getLikedBy();
+        if (likedBy == null) {
+            likedBy = new ArrayList<>();
+        }
+        if (likedBy.contains(userId)) {
+            likedBy.remove(userId);
+        } else {
+            likedBy.add(userId);
+        }
+        post.setLikedBy(likedBy);
+        postRepo.save(post);
+        return post;
+    }
+
 }
