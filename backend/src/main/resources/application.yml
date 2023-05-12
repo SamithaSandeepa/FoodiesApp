@@ -1,0 +1,20 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://helani:paf_team_150@cluster0.wecim0m.mongodb.net/?retryWrites=true&w=majority
+      database: fodiees_db
+
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          github:
+#            clientId: Iv1.4e6c1af8eabe58b2
+#            clientSecret: 89a9222c8d715995a68fbc726fc79d50e0be5ee4
+#
+#          google:
+#            clientId: 608035487106-6p7l76pm19b39oh69g1p49q5o0d7nv85.apps.googleusercontent.com
+#            clientSecret: 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
+
+
+
