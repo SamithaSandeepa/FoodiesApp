@@ -15,8 +15,6 @@ const Comment = ({
   parentId = null,
   currentUserId,
 }) => {
-  console.log(uid, "comment");
-  console.log(currentUserId, "curntui");
   const isEditing =
     activeComment &&
     activeComment.id === comment.id &&

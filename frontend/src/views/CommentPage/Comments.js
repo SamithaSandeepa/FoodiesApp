@@ -79,6 +79,7 @@ const Comments = ({ postId, postImage, userName, userId }) => {
       userId: currentUserId,
       postId: postId,
       commentBody: text,
+      parentId: parentId,
       timeStamp: new Date().getTime(),
     };
     console.log(payload);
