@@ -28,49 +28,6 @@ const MainPage = () => {
       });
   };
 
-  // const upload = (event) => {
-  //   let image = event.target.files[0];
-  //   if (image == null || image === undefined) return;
-
-  //   var uploadTask = storage.ref('images').child(image.name).put(image);
-  //   uploadTask.on(
-  //     'state_changed',
-  //     function (snapshot) {
-  //       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-  //       setProgressBar(progress);
-  //     },
-  //     function (error) {},
-  //     function () {
-  //       uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
-  //         console.log(downloadURL);
-
-  //         let payload = {
-  //           postId: Math.floor(Math.random() * 100000).toString(),
-  //           userId: JSON.parse(localStorage.getItem('users')).uid,
-  //           postPath: downloadURL,
-  //           caption: caption,
-  //           timeStamp: new Date().getTime(),
-  //           likeCount: 0,
-  //         };
-
-  //         const requestOptions = {
-  //           method: 'POST',
-  //           headers: { 'Content-Type': 'application/json' },
-  //           body: JSON.stringify(payload),
-  //         };
-
-  //         fetch('http://localhost:8080/post', requestOptions)
-  //           .then((response) => response.json())
-  //           .then((data) => {
-  //             console.log(data);
-  //             getPost();
-  //           })
-  //           .catch((error) => {});
-  //       });
-  //     }
-  //   );
-  // };
-
   return (
     <div>
       <div className="mainpage__container" style={{ marginLeft: "-130px" }}>

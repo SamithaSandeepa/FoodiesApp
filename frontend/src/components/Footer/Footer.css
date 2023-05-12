@@ -1,0 +1,41 @@
+.footer__text {
+  font-size: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.footer__social-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.footer__social-icons a {
+  margin-right: 10px;
+}
+
+.footer__links {
+  display: flex;
+  align-items: center;
+  margin: 10px 10px;
+}
+
+.footer__links a {
+  margin-right: 20px;
+}
+
+.footer__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.footer__center button {
+  margin-right: 10px;
+}
+
+.footer__center button:last-child {
+  margin-right: 0;
+}

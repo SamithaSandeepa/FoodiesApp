@@ -12,7 +12,7 @@
   border-bottom: 2px solid rgb(31, 28, 28);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   /* max-width: 350px; */
 }
 
@@ -20,30 +20,38 @@
   width: 160px;
   height: 160px;
   border-radius: 80px;
+  margin-left: 30px;
   /* margin-right: 30px; */
 }
 
 .profile-info {
   display: flex;
-  align-items: flex-start;
-}
-
-.profile-username {
-  font-weight: bold;
-  margin-top: 0px;
-  margin-left: 30px;
-}
-
-.username-container {
-  flex-grow: 1;
-  margin-left: 14px;
-  white-space: nowrap;
+  align-items: center;
+  margin-top: 60px;
 }
 
 .profile-stats {
   display: flex;
   align-items: center;
   margin-top: 60px;
+  position: relative; /* add this to make .edit-profile-btn position relative to this container */
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.count {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.label {
+  color: #777777;
+  font-size: 0.9rem;
+  text-transform: lowercase;
 }
 
 .profile-stats span {
@@ -53,7 +61,10 @@
 }
 
 .edit-profile-btn {
-  /* margin-left: 20px; */
+  position: absolute;
+  /* top: 0; */
+  margin-bottom: 145px;
+  right: 0; /* or adjust left or right value based on your design */
   border-radius: 4px;
   height: fit-content;
   border: 1px solid #4e4a4a;
@@ -104,16 +115,24 @@
   font-size: 18px;
   margin: 0;
 }
+.username-container {
+  flex-grow: 1;
+  margin-left: 14px;
+  /* padding: 0 40px; */
+  margin-right: 55px;
+}
+.profile-username {
+  font-weight: bold;
+  margin-top: 0px;
+}
+
 .description {
   font-size: 18px;
-  /* margin-top: 10px;
-  margin-bottom: 20px; */
   margin-right: 0;
   color: #777777;
   line-height: 1.5;
-  max-width: 80%;
+  /* max-width: 80%; */
 }
-
 .description-container {
   margin-top: 10px;
   margin-bottom: 20px;

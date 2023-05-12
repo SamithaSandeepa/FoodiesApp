@@ -52,16 +52,25 @@ const Profile = ({ user }) => {
             </div>
             {/* <div className="description-container"></div> */}
             <div className="profile-stats">
-              <span>{posts.length} posts</span>
-              <span>309 followers</span>
-              <span>124 following</span>
+              <div className="stat">
+                <span className="count">{posts.length}</span>
+                <span className="label">posts</span>
+              </div>
+              <div className="stat">
+                <span className="count">309</span>
+                <span className="label">followers</span>
+              </div>
+              <div className="stat">
+                <span className="count">124</span>
+                <span className="label">following</span>
+              </div>
+              <button
+                className="edit-profile-btn"
+                onClick={() => handleProfileEdit(user)}
+              >
+                Edit Profile
+              </button>
             </div>
-            <button
-              className="edit-profile-btn"
-              onClick={() => handleProfileEdit(user)}
-            >
-              Edit Profile
-            </button>
           </div>
         </div>
         <div
