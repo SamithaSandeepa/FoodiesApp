@@ -10,9 +10,8 @@ import NavBar from "../../components/NavBar/NavBar";
 import Grid from "@material-ui/core/Grid";
 import { Margin } from "@mui/icons-material";
 
-const Comments = ({ postId, postImage }) => {
-  console.log(postId, "samitha");
-  console.log(postImage, "samithaimage");
+const Comments = ({ postId, postImage, userName, userId }) => {
+  console.log(userId, "samitha");
   const currentUserId = JSON.parse(localStorage.getItem("users")).uid;
   const [backendComments, setBackendComments] = useState([]);
   const [activeComment, setActiveComment] = useState(null);
@@ -20,6 +19,7 @@ const Comments = ({ postId, postImage }) => {
   const rootComments = backendComments.filter(
     (backendComment) => backendComment.parentId === null
   );
+  const [image, setImage] = useState([]);
 
   const getReplies = (commentId) =>
     backendComments
@@ -33,6 +33,19 @@ const Comments = ({ postId, postImage }) => {
     getComments();
     console.log(backendComments);
     console.log(rootComments);
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/users/all")
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredUsers = data.filter((user) => user.id == userId);
+        const imagePaths = filteredUsers.map((user) => user.imagePath);
+        setImage(imagePaths);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
 
   const getComments = () => {
@@ -143,7 +156,11 @@ const Comments = ({ postId, postImage }) => {
       <div className="comments">
         <div className="container-comment">
           <div className="post1">
-            <img src={postImage} alt="post" />
+            <div className="post-header">
+              <img src={image} alt="profile" className="profile-img" />
+              <h3 className="post-title">{userName}</h3>
+            </div>
+            <img src={postImage} alt="post" className="post-img" />
           </div>
           <div className="comCont">
             <h3 className="comments-title">Comments</h3>
@@ -154,6 +171,7 @@ const Comments = ({ postId, postImage }) => {
                 <Comment
                   key={rootComment.id}
                   comment={rootComment}
+                  uid={userId}
                   replies={getReplies(rootComment.id)}
                   activeComment={activeComment}
                   setActiveComment={setActiveComment}

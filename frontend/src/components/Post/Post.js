@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./Post.css";
 import {
@@ -40,6 +40,8 @@ const Post = ({ id, userName, caption, imagePath, likeCount, userId }) => {
   const [openModalEdit, setOpenModalEdit] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const currentUser = JSON.parse(localStorage.getItem("users")).uid;
+  console.log(currentUser, "current user");
+  const [image, setImage] = useState([]);
 
   const handleCaptionChange = (event) => {
     setCaptionState(event.target.value);
@@ -70,19 +72,28 @@ const Post = ({ id, userName, caption, imagePath, likeCount, userId }) => {
 
   const handleOpenComment = () => {
     ReactDOM.render(
-      <Comments postId={id} postImage={imagePath} />,
+      <Comments
+        postId={id}
+        postImage={imagePath}
+        userName={userName}
+        userId={userId}
+      />,
       document.getElementById("root")
     );
   };
 
-  // const getPost = () => {
-  //   fetch('http://localhost:8080/post' + id)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setCaptionState(data.caption);
-  //       console.log(data, 'zzz');
-  //     });
-  // };
+  useEffect(() => {
+    fetch("http://localhost:8080/api/users/all")
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredUsers = data.filter((user) => user.userName == userName);
+        const imagePaths = filteredUsers.map((user) => user.imagePath);
+        setImage(imagePaths);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleSubmitEditPost = (id) => {
     let payload = {
@@ -130,7 +141,7 @@ const Post = ({ id, userName, caption, imagePath, likeCount, userId }) => {
     <div className="post__container">
       {/* Header */}
       <div className="post__header">
-        <Avatar className="post__image" src={profileImage} />
+        <Avatar className="post__image" src={image} />
         <div className="post__username">{userName}</div>
         {userId === currentUser ? (
           <IconButton
