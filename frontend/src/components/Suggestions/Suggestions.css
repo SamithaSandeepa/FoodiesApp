@@ -1,0 +1,56 @@
+.suggestions__container {
+  width: 395px;
+  height: 290px;
+  margin-top: 25px;
+}
+.suggestions__header {
+  font-weight: bold;
+  color: #8e8e8e;
+  margin-left: 100px;
+}
+.suggestions__body {
+  height: 256px;
+  height: 290px;
+  margin-top: 10px;
+  margin-left: 100px;
+}
+.suggestions__friends {
+  display: flex;
+  align-items: center;
+}
+.suggestions__image {
+  max-width: 35px;
+  max-height: 35px;
+}
+.suggestions__username {
+  font-weight: bold;
+  margin: 10px;
+  margin-left: 10px;
+}
+.follow-button {
+  margin-left: auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* Gray follow button */
+.follow-button-gray {
+  background-color: #ddd;
+  color: #333;
+}
+
+/* Blue follow button */
+.follow-button-blue {
+  background-color: #3897f0;
+  color: #fff;
+}
+
+.suggestions__container1 {
+  display: flex;
+  align-items: center;
+}
+.suggestions__image {
+  margin-right: 10px;
+}

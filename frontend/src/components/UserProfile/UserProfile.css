@@ -1,0 +1,124 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+/* Profile Header */
+.profile-header {
+  margin: 35px 0;
+  width: 615px;
+  border-bottom: 2px solid rgb(31, 28, 28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* max-width: 350px; */
+}
+
+.profile-image img {
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  /* margin-right: 30px; */
+}
+
+.profile-info {
+  display: flex;
+  align-items: flex-start;
+}
+
+.profile-username {
+  font-weight: bold;
+  margin-top: 0px;
+  margin-left: 30px;
+}
+
+.username-container {
+  flex-grow: 1;
+  margin-left: 14px;
+  white-space: nowrap;
+}
+
+.profile-stats {
+  display: flex;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.profile-stats span {
+  /* margin-right: 30px; */
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.edit-profile-btn {
+  /* margin-left: 20px; */
+  border-radius: 4px;
+  height: fit-content;
+  border: 1px solid #4e4a4a;
+  padding: 5px 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #fff;
+  color: #262626;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Profile picture styles */
+.profile-picture {
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+}
+
+/* Gallery styles */
+.gallery {
+  margin-top: 10px;
+  width: 615px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery-item {
+  padding: 5px;
+  width: 30%;
+}
+
+/* Button styles */
+.edit-btn {
+  margin: 10px;
+}
+
+/* Stats styles */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  width: 108%;
+}
+
+.stats h6 {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+.description {
+  font-size: 18px;
+  /* margin-top: 10px;
+  margin-bottom: 20px; */
+  margin-right: 0;
+  color: #777777;
+  line-height: 1.5;
+  max-width: 80%;
+}
+
+.description-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
