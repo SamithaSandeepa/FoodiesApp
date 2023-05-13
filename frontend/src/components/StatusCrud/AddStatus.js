@@ -222,7 +222,7 @@ const AddStatus = () => {
                   justifyContent: "center",
                   height: "100vh",
                   // background colour white opacity 0.5
-                  backgroundColor: "rgba(255, 255, 255, 0.5)",
+                  backgroundColor: "rgba(255, 255, 255, 0.7)",
                 }}
               >
                 <h2 style={{ marginBottom: "20px" }}>Upload Status</h2>
@@ -241,9 +241,33 @@ const AddStatus = () => {
 
                   <label
                     htmlFor="file-upload-status"
-                    style={{ alignSelf: "center" }}
+                    style={{
+                      alignSelf: "center",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      background:
+                        "linear-gradient(to bottom, #d9d9d9, #f7f7f7)",
+                      borderRadius: 0,
+                      padding: "6px 12px",
+                      cursor: "pointer",
+                      boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
+                      border: "1px solid #ccc",
+                      opacity: 0.8,
+                    }}
                   >
-                    <AddCircleTwoToneIcon style={{ fontSize: 68 }} />
+                    <AddCircleTwoToneIcon
+                      style={{ fontSize: 36, color: "#080808" }}
+                    />
+                    <span
+                      style={{
+                        marginLeft: 8,
+                        color: "#080808",
+                        fontWeight: "normal",
+                      }}
+                    >
+                      Add New
+                    </span>
                   </label>
                   <input
                     id="file-upload-status"
@@ -276,8 +300,8 @@ const AddStatus = () => {
                       src={URL.createObjectURL(file)}
                       alt="story"
                       style={{
-                        width: "100px",
-                        height: "100px",
+                        width: "200px",
+                        height: "400px",
                         objectFit: "contain",
                         marginRight: "20px",
                       }}
