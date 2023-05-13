@@ -19,6 +19,7 @@ import CancelTwoToneIcon from "@mui/icons-material/CancelTwoTone";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import EditStatus from "./EditStatus";
+import { API_URL } from "../../config/index";
 
 const style = {
   position: "absolute",
@@ -55,7 +56,7 @@ const UserStatus = ({ user }) => {
         "Access-Control-Allow-Origin": "*",
       },
     };
-    fetch("http://localhost:8080/api/story/all", requestOptions)
+    fetch(`${API_URL}/api/story/all`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         const filteredData = data.filter((item) => item.userId === user.id);
@@ -145,7 +146,7 @@ const UserStatus = ({ user }) => {
             body: JSON.stringify(payload),
           };
 
-          fetch("http://localhost:8080/api/story/save", requestOptions)
+          fetch(`${API_URL}/api/story/save`, requestOptions)
             .then((response) => response.json())
             .then((data) => {
               console.log(data);

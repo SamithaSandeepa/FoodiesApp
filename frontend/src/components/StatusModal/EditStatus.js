@@ -5,6 +5,7 @@ import "./EditStatus.css";
 import NavBar from "../NavBar/NavBar";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { API_URL } from "../../config/index";
 
 const EditStatus = (item) => {
   // const { id, userName, path, status } = item;
@@ -30,7 +31,7 @@ const EditStatus = (item) => {
   }, [item]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/users/all")
+    fetch(`${API_URL}/api/users/all`)
       .then((response) => response.json())
       .then((data) => {
         const filteredUsers = data.filter((user) => user.userName == userName);
@@ -76,7 +77,7 @@ const EditStatus = (item) => {
       body: JSON.stringify(payload),
     };
 
-    fetch(`http://localhost:8080/api/story/update/${id}`, requestOptions)
+    fetch(`${API_URL}/api/story/update/${id}`, requestOptions)
       .then(
         (response) => response.json()
         // window.location.reload()
@@ -94,7 +95,7 @@ const EditStatus = (item) => {
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:8080/api/story/delete/${id}`, {
+    fetch(`${API_URL}/api/story/delete/${id}`, {
       method: "DELETE",
     })
       .then((response) => {
