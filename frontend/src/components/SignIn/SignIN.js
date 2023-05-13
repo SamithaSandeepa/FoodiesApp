@@ -31,7 +31,7 @@ function SignIn() {
           setEmailId(event.currentTarget.value);
         }}
         type="text"
-        placeholder="Phone number, username, or email"
+        placeholder="Enter email"
       />
       <input
         className="logipage__text"

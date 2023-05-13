@@ -12,6 +12,12 @@ function SignUp() {
 
   const newSignUp = () => {
     console.log(emailId, name, userName, password);
+    //password validation (?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,} use this regex for password validation
+    if(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)){
+      alert("Password must contain atleast 8 characters, 1 uppercase, 1 lowercase and 1 number");
+      return;
+    }
+
     auth
       .createUserWithEmailAndPassword(emailId, password)
       .then((userCredential) => {
@@ -56,8 +62,9 @@ function SignUp() {
         onChange={(event) => {
           setEmailId(event.currentTarget.value);
         }}
-        type="text"
-        placeholder="Mobile number or Email"
+        type="email"
+        placeholder="Enter Email"
+        required
       />
       <input
         className="logipage__text"
@@ -66,6 +73,7 @@ function SignUp() {
         }}
         type="text"
         placeholder="Full Name"
+        required
       />
       <input
         className="logipage__text"
@@ -74,6 +82,7 @@ function SignUp() {
         }}
         type="text"
         placeholder="Username"
+        required
       />
       <input
         className="logipage__text"
@@ -82,6 +91,7 @@ function SignUp() {
         }}
         type="password"
         placeholder="Password"
+        required
       />
       <Button
         className="login__button"
