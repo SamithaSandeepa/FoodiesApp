@@ -118,13 +118,13 @@ const AddStatus = () => {
   };
 
   const handleSubmit = (event) => {
-    setLoading(true);
     event.preventDefault();
 
     if (!file) {
       alert("Please select a file");
       return;
     }
+    setLoading(true);
 
     var uploadTask = storage.ref("story").child(file.name).put(file);
 
@@ -250,6 +250,7 @@ const AddStatus = () => {
                     type="file"
                     style={{ display: "none" }}
                     onChange={handleFileChange}
+                    // required
                   />
                 </div>
                 <div>
