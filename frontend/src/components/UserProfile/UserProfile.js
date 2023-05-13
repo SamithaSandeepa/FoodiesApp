@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
 import NavBar from "../NavBar/NavBar";
 import defaultImage from "../../images/pp1.png";
-import UserStatus from "../StatusModal/UserStatus";
+import UserStatus from "../StatusCrud/UserStatus";
 import EditProfile from "./EditProfile";
 import ReactDom from "react-dom";
 import { json } from "react-router-dom";

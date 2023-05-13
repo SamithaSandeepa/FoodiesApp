@@ -1,7 +1,7 @@
 import React from "react";
 import "./StatusBar.css";
-import AddStatus from "../StatusModal/AddStatus";
-import UserStatus from "../StatusModal/UserStatus";
+import AddStatus from "../StatusCrud/AddStatus";
+import UserStatus from "../StatusCrud/UserStatus";
 
 const StatusBar = () => {
   return (
