@@ -8,6 +8,7 @@ import {
 import Layout from "./layout/Layout";
 import Home from "./views/HomePage/Home";
 import LoginPage from "./views/LoginPage/LoginPage";
+import { ContextProvider } from "./context/ContextProvider";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(
@@ -22,14 +23,16 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Layout logout={handleLogout} isLoggedIn={isLoggedIn}>
-          <Routes>
-            <Route path="/" element={isLoggedIn ? <Home /> : <LoginPage />} />
-            {isLoggedIn ? null : (
-              <Route path="/login" element={<Navigate to="/" />} />
-            )}
-          </Routes>
-        </Layout>
+        <ContextProvider>
+          <Layout logout={handleLogout} isLoggedIn={isLoggedIn}>
+            <Routes>
+              <Route path="/" element={isLoggedIn ? <Home /> : <LoginPage />} />
+              {isLoggedIn ? null : (
+                <Route path="/login" element={<Navigate to="/" />} />
+              )}
+            </Routes>
+          </Layout>
+        </ContextProvider>
       </Router>
     </div>
   );

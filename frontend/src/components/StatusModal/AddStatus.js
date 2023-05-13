@@ -19,6 +19,7 @@ import CancelTwoToneIcon from "@mui/icons-material/CancelTwoTone";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import EditStatus from "./EditStatus";
+import { useStateContext } from "../../context/ContextProvider";
 import { API_URL } from "../../config/index";
 
 const style = {
@@ -44,12 +45,16 @@ const AddStatus = () => {
   const currentUser = JSON.parse(localStorage.getItem("users")).uid;
   // console.log(currentUser);
   const [checked, setChecked] = React.useState(false);
+  const { setLoading } = useStateContext();
 
   useEffect(() => {
+    // setLoading(false);
     getData();
   }, []);
 
-  const getData = () => {
+  const getData = async () => {
+    setLoading(true);
+
     const requestOptions = {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -58,8 +63,10 @@ const AddStatus = () => {
     fetch(`${API_URL}/api/story/all`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
+        setLoading(false);
         const filteredData = data.filter((item) => item.privacy === false);
         setStatusList(filteredData);
+        // setLoading(false);
       });
   };
 
@@ -111,6 +118,7 @@ const AddStatus = () => {
   };
 
   const handleSubmit = (event) => {
+    setLoading(true);
     event.preventDefault();
 
     if (!file) {
@@ -155,7 +163,8 @@ const AddStatus = () => {
               // clear form
               setCaption("");
               setFile(null);
-              alert("Story added successfully");
+              setLoading(false);
+              // alert("Story added successfully");
             })
             .catch((error) => {
               console.log(error, "error");
