@@ -14,7 +14,7 @@ function SignUp() {
   const newSignUp = () => {
     console.log(emailId, name, userName, password);
     //password validation (?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,} use this regex for password validation
-    if (!password.match(/^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}$/)) {
+    if (!password.match(/^[A-Za-z0-9]+$/)) {
       setPasswordError(true);
       return;
     }
@@ -97,7 +97,7 @@ function SignUp() {
       {passwordError && (
         <div style={{ color: "red" }}>
           Password must contain at least one letter, one number,one special
-          character and 8 characters long.
+          characters and 8 characters long.
         </div>
       )}
       <Button

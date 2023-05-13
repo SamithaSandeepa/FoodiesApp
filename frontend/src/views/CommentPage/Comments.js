@@ -2,14 +2,7 @@ import { useState, useEffect } from "react";
 import CommentForm from "../../components/comments/CommentForm";
 import Comment from "../../components/comments/Comment";
 import "../../views/CommentPage/Comments.css";
-import {
-  updateComment as updateCommentApi,
-  deleteComment as deleteCommentApi,
-} from "../api";
 import NavBar from "../../components/NavBar/NavBar";
-import Grid from "@material-ui/core/Grid";
-import { Margin } from "@mui/icons-material";
-import { Avatar } from "@material-ui/core";
 
 const Comments = ({ postId, postImage, userName, userId }) => {
   console.log(userId, "samitha");

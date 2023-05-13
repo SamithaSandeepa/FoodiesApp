@@ -1,7 +1,6 @@
 import CommentForm from "./CommentForm";
 import { useState, useEffect } from "react";
 import "../../views/CommentPage/Comments.css";
-import pp1 from "../../images/pp3.jpeg";
 
 const Comment = ({
   comment,
