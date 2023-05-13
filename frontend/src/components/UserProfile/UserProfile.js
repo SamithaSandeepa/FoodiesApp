@@ -5,9 +5,12 @@ import defaultImage from "../../images/pp1.png";
 import UserStatus from "../StatusModal/UserStatus";
 import EditProfile from "./EditProfile";
 import ReactDom from "react-dom";
+import { json } from "react-router-dom";
 
 const Profile = ({ user }) => {
   const [posts, setPosts] = useState([]);
+  const currentUserId = JSON.parse(localStorage.getItem("users")).uid;
+  console.log(currentUserId, "currentUserId");
   console.log(user, "userProfle");
 
   useEffect(() => {
@@ -64,12 +67,14 @@ const Profile = ({ user }) => {
                 <span className="count">0</span>
                 <span className="label">following</span>
               </div>
-              <button
-                className="edit-profile-btn"
-                onClick={() => handleProfileEdit(user)}
-              >
-                Edit Profile
-              </button>
+              {currentUserId === user.id ? (
+                <button
+                  className="edit-profile-btn"
+                  onClick={() => handleProfileEdit(user)}
+                >
+                  Edit Profile
+                </button>
+              ) : null}
             </div>
           </div>
         </div>
