@@ -91,6 +91,7 @@ const EditProfile = ({ user }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        alert("Profile Updated Successfully");
         window.location.reload();
       })
       .catch((error) => {

@@ -57,11 +57,11 @@ const Profile = ({ user }) => {
                 <span className="label">posts</span>
               </div>
               <div className="stat">
-                <span className="count">309</span>
+                <span className="count">0</span>
                 <span className="label">followers</span>
               </div>
               <div className="stat">
-                <span className="count">124</span>
+                <span className="count">0</span>
                 <span className="label">following</span>
               </div>
               <button
