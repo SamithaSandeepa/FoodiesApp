@@ -9,12 +9,13 @@ function SignUp() {
   const [name, setName] = useState(null);
   const [userName, setUserName] = useState(null);
   const [password, setPassword] = useState(null);
+  const [passwordError, setPasswordError] = useState(false);
 
   const newSignUp = () => {
     console.log(emailId, name, userName, password);
-    //password validation (?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,} use this regex for password validation
-    if(password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)){
-      alert("Password must contain atleast 8 characters, 1 uppercase, 1 lowercase and 1 number");
+    //password validation (?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,} use this regex for password validation
+    if (!password.match(/^(?=.\d)(?=.[a-z])(?=.*[A-Z]).{8,}$/)) {
+      setPasswordError(true);
       return;
     }
 
@@ -93,6 +94,12 @@ function SignUp() {
         placeholder="Password"
         required
       />
+      {passwordError && (
+        <div style={{ color: "red" }}>
+          Password must contain at least one letter, one number,one special
+          character and 8 characters long.
+        </div>
+      )}
       <Button
         className="login__button"
         onClick={newSignUp}
